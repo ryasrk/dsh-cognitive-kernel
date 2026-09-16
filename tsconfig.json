@@ -1,0 +1,72 @@
+{
+  "compilerOptions": {
+    "target": "es2024",
+    "lib": [
+      "es2024",
+      "dom",
+      "dom.iterable"
+    ],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "types": [
+      "node",
+      "react"
+    ],
+    "paths": {
+      "@deepseek-ai/cordis": [
+        "../../deepseek-harness/vendor/cordis/lib/types/index.d.ts"
+      ],
+      // Keep this pointing at the declaration file: `schemastery`'s source
+      // compiles only under the vendored project's relaxed flags, and pulling
+      // it in here makes these three lines someone else's type errors. The
+      // browser build needs real code rather than types, so the client face
+      // resolves the same name through `tsconfig.client.json` instead — see
+      // the note in tsdown.config.ts.
+      "@deepseek-ai/schemastery": [
+        "../../deepseek-harness/vendor/schemastery/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-llm": [
+        "../../deepseek-harness/packages/llm/llm/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-tools": [
+        "../../deepseek-harness/packages/core/tools/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-settings": [
+        "../../deepseek-harness/packages/settings/settings/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-subagent": [
+        "../../deepseek-harness/packages/subagent/subagent/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-typert-protocol": [
+        "../../deepseek-harness/packages/typert/protocol/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-typert-registry": [
+        "../../deepseek-harness/packages/typert/registry/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-typert-registry/client": [
+        "../../deepseek-harness/packages/typert/registry/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-api-remotes/client": [
+        "../../deepseek-harness/packages/api/remotes/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-settings/client": [
+        "../../deepseek-harness/packages/client/ui-settings/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-renderer/client": [
+        "../../deepseek-harness/packages/client/ui-renderer/lib/types/client/index.d.ts"
+      ]
+    },
+    "noEmit": true
+  },
+  "include": [
+    "src"
+  ]
+}

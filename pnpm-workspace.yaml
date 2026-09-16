@@ -1,0 +1,20 @@
+# pnpm settings for this package.
+#
+# `@huggingface/transformers` depends on `onnxruntime-node`, whose install
+# script downloads a platform-specific native binary, and on `sharp`, which
+# does the same for an image codec. Neither is used here: the embedding path
+# runs on the WASM backend (`onnxruntime-web`) with the model bundled in
+# `model/`, and this plugin only ever embeds text. Both scripts are therefore
+# denied rather than merely left unapproved.
+#
+# pnpm 11 blocks dependency build scripts by default and reports the block as
+# `ERR_PNPM_IGNORED_BUILDS` at the end of an otherwise successful install, which
+# reads as a failure. Naming them false makes the install clean and the
+# decision explicit. This setting lives here, not in `package.json`: pnpm 11
+# stopped reading a `pnpm` field in the manifest.
+allowBuilds:
+  onnxruntime-node: false
+  sharp: false
+  # Transitive dependency of the ONNX stack. Its script is postinstall
+  # housekeeping and the package works without it.
+  protobufjs: false

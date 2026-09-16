@@ -1,0 +1,55 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@deepseek-ai/cordis": [
+        "../../deepseek-harness/vendor/cordis/lib/types/index.d.ts"
+      ],
+      // The bundler reads this file, not the root one, and a declaration file
+      // is not code: resolving to `lib/types` makes the client bundle inline a
+      // type-only stub whose `Schema` is undefined at factory time. Source is
+      // the only thing rolldown can emit.
+      //
+      // The root tsconfig keeps the `lib/types` alias on purpose — this
+      // package's source only type-checks against the vendored project's own
+      // relaxed flags — so `tsc --noEmit` and the client build resolve the
+      // same specifier to two different files, deliberately.
+      "@deepseek-ai/schemastery": [
+        "../../deepseek-harness/vendor/schemastery/src/index.ts"
+      ],
+      "@deepseek-ai/dsh-llm": [
+        "../../deepseek-harness/packages/llm/llm/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-tools": [
+        "../../deepseek-harness/packages/core/tools/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-settings": [
+        "../../deepseek-harness/packages/settings/settings/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-subagent": [
+        "../../deepseek-harness/packages/subagent/subagent/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-typert-protocol": [
+        "../../deepseek-harness/packages/typert/protocol/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-typert-registry": [
+        "../../deepseek-harness/packages/typert/registry/lib/types/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-typert-registry/client": [
+        "../../deepseek-harness/packages/typert/registry/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-api-remotes/client": [
+        "../../deepseek-harness/packages/api/remotes/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-settings/client": [
+        "../../deepseek-harness/packages/client/ui-settings/lib/types/client/index.d.ts"
+      ],
+      "@deepseek-ai/dsh-client-ui-renderer/client": [
+        "../../deepseek-harness/packages/client/ui-renderer/lib/types/client/index.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
